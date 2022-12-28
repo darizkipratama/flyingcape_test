@@ -26,8 +26,9 @@
             </div>
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <form method="POST" action="{{ route('products.purchase') }}"
+                <form method="POST" action="{{ route('products.purchase') }}">
                     @csrf
+                    <input type="hidden" value={{$product->id}} name="productId" />
                     <x-primary-button class="mt-4">
                         Subscribe
                     </x-primary-button>

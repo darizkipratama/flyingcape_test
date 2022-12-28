@@ -29,7 +29,11 @@ class ProductController extends Controller
     public function purchase(Request $request)
     {
         //
-        $productId = $request->ProductId;
+        $productId = $request->productId;
+        $userId = Auth::user()->id;
+
+        // Create Invoices
+        
     }
 
     /**
