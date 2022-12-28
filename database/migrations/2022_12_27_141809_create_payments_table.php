@@ -20,8 +20,8 @@ return new class extends Migration
             $table->double('InvoiceSum',10,2);
             $table->enum('status',['paid', 'unpaid']);
             $table->dateTime('PaymentDate');
-            $table->bigInteger('UserId');
-            $table->foreign('UserId')->references('id')->on('users');
+            $table->unsignedBigInteger('UserId');
+            $table->foreign('UserId')->references('Id')->on('users');
         });
     }
 

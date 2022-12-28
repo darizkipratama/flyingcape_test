@@ -15,27 +15,21 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products = Product::all();
+        return view('welcome',[
+            'listOfProduct' => $products->take(5)
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Process for purchase a subscription.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function purchase(Request $request)
     {
         //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $productId = $request->ProductId;
     }
 
     /**
@@ -44,42 +38,25 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request, $product)
     {
         //
+        $getProduct = Product::find($product);
+        return view('product.detail', [
+            'product' => $getProduct,
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * Display all Products For Authorized User
      */
-    public function edit(Product $product)
+    public function showAll() 
     {
-        //
+        $products = Product::all();
+        return view('dashboard',[
+            'listOfProduct' => $products
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
-    }
+    
 }
