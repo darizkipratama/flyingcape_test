@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('InvoiceNumber')->unique();
             $table->double('InvoiceSum',10,2);
             $table->enum('status',['paid', 'unpaid']);
-            $table->dateTime('PaymentDate');
-            $table->unsignedBigInteger('UserId');
-            $table->foreign('UserId')->references('Id')->on('users');
+            $table->dateTime('PaymentDate')->nullable()->default(null);
+
+            $table->foreignId('user_id')->nullable()->references('Id')->on('users');
         });
     }
 

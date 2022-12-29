@@ -26,16 +26,25 @@
             </div>
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+
+
+                @if (isset($message))
+                {{ $message }}
+                @else
                 <form method="POST" action="{{ route('products.purchase') }}">
                     @csrf
                     <input type="hidden" value={{$product->id}} name="productId" />
                     <x-primary-button class="mt-4">
                         Subscribe
                     </x-primary-button>
-                    <a href="{{route('dashboard')}}" class="btn btn-blue ml-3">
-                        Cancel
-                    </a>
+                    
                 </form>
+                <a href="{{route('dashboard')}}" class="btn btn-blue ml-3">
+                    Cancel
+                </a>
+                    
+                
+                @endif
             </div>
         </div>
     </div>

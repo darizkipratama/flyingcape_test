@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number'
     ];
 
     /**
@@ -44,6 +45,6 @@ class User extends Authenticatable
 
     public function subscribes()
     {
-        return $this->hasMany(Invoice::class);
+        return $this->hasMany(Payment::class);
     }
 }

@@ -10,6 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    {{-- @foreach ($subcribedProducts as $id)
+                    {{$id}}
+                    @endforeach --}}
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -25,9 +28,13 @@
                                 </div>
                             </div>
                             <div class="ml-12">
+                                @if(in_array($product->id, $subcribedProducts))
+                                    You Already Subcribed
+                                @else
                                 <a href="{{route('products.show', $product)}}" class="btn btn-blue">
-                                    Subscribe
+                                    Click to Subscribe
                                 </a>
+                                @endif
                             </div>
                         </div>
                     @endforeach

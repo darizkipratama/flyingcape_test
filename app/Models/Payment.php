@@ -16,13 +16,13 @@ class Payment extends Model
         'PaymentDate'
     ];
 
-    public function owner() 
+    public function user() 
     {
         return $this->belongsTo(User::class);
     }
 
     public function product()
     {
-        return $this->belongsToMany(Product::class,'subscriptions','InvoiceId','PaymentId')->withTimestamps();
+        return $this->belongsToMany(Product::class,'subscriptions','payment_id','product_id')->withTimestamps();
     }
 }

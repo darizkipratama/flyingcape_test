@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('InvoiceId');
-            $table->foreign('InvoiceId')->references('id')->on('payments');
-            $table->unsignedBigInteger('ProductId');
-            $table->foreign('ProductId')->references('id')->on('products');
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payments');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

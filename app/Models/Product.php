@@ -15,8 +15,8 @@ class Product extends Model
         'VideoUrl'
     ];
 
-    public function subscriber() 
+    public function subscriptions() 
     {
-        return $this->belongsToMany(Payment::class,'subscriptions','ProductId','InvoiceId')->withTimestamps();
+        return $this->belongsToMany(Payment::class,'subscriptions','product_id','payment_id')->withTimestamps();
     }
 }
